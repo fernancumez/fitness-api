@@ -1,0 +1,30 @@
+{
+  "name": "fitness-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src/ --out-dir build",
+    "clean": "rimraf build",
+    "start": "npm run build && node build/index.js",
+    "dev": "nodemon --exec babel-node src/index.js"
+  },
+  "keywords": [],
+  "author": "fernancumez",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "mongoose": "5.10.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.12.10",
+    "@babel/core": "7.12.10",
+    "@babel/node": "7.12.10",
+    "@babel/preset-env": "7.12.11",
+    "morgan": "1.10.0",
+    "nodemon": "2.0.4",
+    "rimraf": "3.0.2"
+  }
+}

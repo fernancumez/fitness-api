@@ -1,0 +1,31 @@
+### GET posts/:id
+GET http://localhost:4000/api/exercises/5f7b5625e02e78380c914066
+
+### GET posts
+GET http://localhost:4000/api/exercises
+
+### POST Creating a new post
+POST http://localhost:4000/api/exercises
+Content-Type: application/json
+
+{
+    "title":"Learning vscode",
+    "description":"It´s fun",
+    "image_url": "https://img.code/34322323.png"
+}
+
+### PUT Update post
+
+PUT http://localhost:4000/api/exercises/5f7b5625e02e78380c914066
+Content-Type: application/json
+
+{
+    "title":"Learning vscode editado",
+    "description":"It´s fun",
+    "img": "https://firebasestorage.googleapis.com/v0/b/tutoriales-e4830.appspot.com/o/exercise.png?alt=media&token=b9c4b236-16a9-4a56-bba2-90c9660a0f06",
+    "leftColor": "#A74CF2",
+    "rightColor": "#617BFB",
+}
+
+### DELETE Delete post
+DELETE http://localhost:4000/api/exercises/5f7b5625e02e78380c914066
