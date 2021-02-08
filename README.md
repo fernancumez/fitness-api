@@ -79,7 +79,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Fernando Cúmez - [@fernancumez](https://twitter.com/fernancumez) - fernancumez@gmail.com
 
-Project Link: [https://github.com/fernancumez/fitness-api.git](https://github.com/fernancumez/fitness-api.git)
+Project Link: [https://github.com/fernancumez/fitness-api](https://github.com/fernancumez/fitness-api)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

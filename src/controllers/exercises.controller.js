@@ -1,10 +1,10 @@
-import Exercise from "../models/exercise";
+import Exercise from "../models/exercise.model";
 
-const getExercise = async (req, res) => {
+export const getExercise = async (req, res) => {
   try {
-    const { id } = req.params;
+    const exerciseId = req.params.id;
 
-    const exercise = await Exercise.findById(id);
+    const exercise = await Exercise.findById(exerciseId);
     if (!exercise) return res.status(404).json({ error: "Exercise not found" });
 
     return res.status(200).json(exercise);
@@ -13,62 +13,68 @@ const getExercise = async (req, res) => {
   }
 };
 
-const getExercises = async (req, res) => {
+export const getExercises = async (req, res) => {
   try {
-    const exercise = await Exercise.find();
-    return res.status(200).json(exercise);
+    const limit = parseInt(req.query.limit) || 10;
+    const page = parseInt(req.query.page) || 1;
+
+    console.log(req.query);
+    const exercises = await Exercise.paginate({}, { limit, page });
+
+    return res.status(200).json(exercises);
   } catch (error) {
     return res.status(400).json({ error });
   }
 };
 
-const createExercise = async (req, res) => {
+export const createExercise = async (req, res) => {
   try {
     const { title, description, img, leftColor, rightColor } = req.body;
 
-    const body = { title, description, img, leftColor, rightColor };
+    const exerciseData = { title, description, img, leftColor, rightColor };
 
-    const newExercise = new Exercise(body);
+    const newExercise = new Exercise(exerciseData);
 
-    await newExercise.save();
-    return res.status(201).json({ message: "Exercise added" });
+    const exercise = await newExercise.save();
+    return res.status(201).json({ message: "Exercise added", exercise });
   } catch (error) {
     return res.status(400).json(error);
   }
 };
 
-const updateExercise = async (req, res) => {
+export const updateExercise = async (req, res) => {
   try {
-    const { id } = req.params;
+    const exerciseId = req.params.id;
 
-    const exerciseUpdated = await Exercise.findByIdAndUpdate(id, req.body);
-    if (!exerciseUpdated)
+    const updateExercise = await Exercise.findByIdAndUpdate(
+      exerciseId,
+      req.body
+    );
+    if (!updateExercise)
       return res.status(404).json({ error: "User not found" });
 
-    return res.status(200).json({ message: "Exercise updated" });
+    const exerciseUpdated = await Exercise.findById(exerciseId);
+
+    return res
+      .status(200)
+      .json({ message: "Exercise updated", exercise: exerciseUpdated });
   } catch (error) {
     return res.status(400).json({ error });
   }
 };
 
-const deleteExercise = async (req, res) => {
+export const deleteExercise = async (req, res) => {
   try {
-    const { id } = req.params;
+    const exerciseId = req.params.id;
 
-    const exerciseDeleted = await Exercise.findByIdAndDelete(id);
+    const exerciseDeleted = await Exercise.findByIdAndDelete(exerciseId);
     if (!exerciseDeleted)
       return res.status(404).json({ error: "Exercise not found" });
 
-    return res.status(200).json({ message: "Exercise deleted" });
+    return res
+      .status(200)
+      .json({ message: "Exercise deleted", exercise: exerciseDeleted });
   } catch (error) {
     return res.status(400).json({ error });
   }
-};
-
-export {
-  getExercise,
-  getExercises,
-  createExercise,
-  updateExercise,
-  deleteExercise,
 };
