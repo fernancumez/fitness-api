@@ -12,7 +12,7 @@ export const startConnection = async () => {
     };
 
     await connect(URI, DBOptions);
-    console.log("DB is connected!");
+    console.log("Database is connected!");
   } catch (err) {
     console.error(err);
   }
