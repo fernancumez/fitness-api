@@ -1,11 +1,13 @@
-import { config } from "dotenv";
+import PRODUCTION from "./production";
+import DEVELOPMENT from "./development";
 
-process.env.NODE_ENV !== "production" ? config() : "";
+const { NODE_ENV } = process.env;
 
-const Config = {
-  MONGODB_URI: process.env.MONGODB_URI || "mongodb://localhost/fitenessapp",
-  NODE_ENV: process.env.NODE_ENV || "development",
-  PORT: process.env.PORT || 4000,
+const verifyEnv = () => {
+  if (NODE_ENV !== "production") return DEVELOPMENT;
+  return PRODUCTION;
 };
 
-export default Config;
+const currentEnv = verifyEnv();
+
+export default currentEnv;

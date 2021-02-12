@@ -1,4 +1,4 @@
-import Exercise from "../models/exercise.model";
+import Exercise from "../models/exercise.models";
 
 export const getExercise = async (req, res) => {
   try {
@@ -18,7 +18,6 @@ export const getExercises = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const page = parseInt(req.query.page) || 1;
 
-    console.log(req.query);
     const exercises = await Exercise.paginate({}, { limit, page });
 
     return res.status(200).json(exercises);
