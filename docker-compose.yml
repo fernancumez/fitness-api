@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  web:
+    container_name: fitness-api
+    image: node:14.15.4
+    restart: always
+    build: .
+    command: npm run dev
+    ports:
+      - "4000:4000"
+    depends_on:
+      - database
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DATABASE_URL=mongodb://fitness-database/fitnessapp
+
+  database:
+    container_name: fitness-database
+    image: mongo:4.4.3
+    ports:
+      - "27017:27017"
+    logging:
+      driver: none

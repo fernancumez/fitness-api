@@ -6,8 +6,8 @@
   "scripts": {
     "build": "babel src/ --out-dir build",
     "clean": "rimraf build",
-    "start": "SET NODE_ENV=production&& npm run clean && npm run build && node build/index.js",
-    "dev": "SET NODE_ENV=development&& nodemon --exec babel-node src/index.js",
+    "start": "export || SET NODE_ENV=production&& npm run clean && npm run build && node build/index.js",
+    "dev": "export || SET NODE_ENV=development&& nodemon --exec babel-node src/index.js",
     "test": "mocha test/exercise.test.js --require @babel/register --exit"
   },
   "repository": {
