@@ -8,7 +8,7 @@ import exerciseRoutes from "./routes/exercise.routes";
 const app = express();
 
 // Configurations
-app.set("port", config.PORT);
+app.set("port", parseInt(config.PORT));
 
 // Middlewares
 app.use(cors());

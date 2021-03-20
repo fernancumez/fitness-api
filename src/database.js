@@ -3,15 +3,14 @@ import config from "./config";
 
 export const startConnection = async () => {
   try {
-    const URI = config.DATABASE_URL;
-    const DBOptions = {
+    const databaseOptions = {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
     };
 
-    await connect(URI, DBOptions);
+    await connect(config.DATABASE_URL, databaseOptions);
     console.log("Database is connected!");
     console.log(connection.name);
   } catch (err) {
