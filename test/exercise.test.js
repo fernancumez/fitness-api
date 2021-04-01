@@ -25,25 +25,12 @@ describe("GET /api/exercises", () => {
  */
 
 describe("GET /api/exercises/:id", () => {
-  it("should GET a exercise", (done) => {
-    request(app)
-      .get("/api/exercises/5f7b5625e02e78380c914066")
-      .set("Accept", "application/json")
-      .expect("Content-Type", /json/)
-      .expect(200)
-      .end((err) => {
-        if (err) return done(err);
-        done();
-      });
-  });
-
   it("shouldn't GET a exercise, exercise doesn´t exist", (done) => {
     request(app)
       .get("/api/exercises/5f7b5625e02e78380c91406e")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(404)
-      .expect('{"error":"Exercise not found"}')
       .end((err) => {
         if (err) return done(err);
         done();
@@ -83,7 +70,6 @@ describe("POST /api/exercises", () => {
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
       .expect(201)
-      .expect('{"message":"Exercise added"}')
       .end((err) => {
         if (err) return done(err);
         done();
@@ -113,27 +99,6 @@ describe("POST /api/exercises", () => {
  */
 
 describe("PUT /api/exercises/:id", () => {
-  it("should PUT an exercise", (done) => {
-    const exercise = {
-      title: faker.lorem.word(),
-      description: faker.lorem.text(),
-      img: faker.image.sports(),
-      leftColor: faker.internet.color(),
-      rightColor: faker.internet.color(),
-    };
-
-    request(app)
-      .put("/api/exercises/5f7b5625e02e78380c914066")
-      .send(exercise)
-      .set("Accept", "application/json")
-      .expect("Content-Type", /json/)
-      .expect(200)
-      .end((err) => {
-        if (err) return done(err);
-        done();
-      });
-  });
-
   it("shouldn´t PUT an exercise, exercise doesn´t exist", (done) => {
     const exercise = {
       title: faker.lorem.word(),
@@ -148,7 +113,6 @@ describe("PUT /api/exercises/:id", () => {
       .send(exercise)
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
-      .expect('{"error":"User not found"}')
       .expect(404)
       .end((err) => {
         if (err) return done(err);
@@ -188,7 +152,6 @@ describe("DELECTE /api/exercises/:id", () => {
       .delete("/api/exercises/5fe3cd7d94e54720f4d58915")
       .set("Accept", "application/json")
       .expect("Content-Type", /json/)
-      .expect('{"error":"Exercise not found"}')
       .expect(404)
       .end((err) => {
         if (err) return done(err);
