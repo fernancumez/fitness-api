@@ -3,7 +3,7 @@ version: "3"
 services:
   web:
     container_name: fitness-api
-    image: node:14.15.4
+    image: node:14.16.0-alpine
     restart: always
     build: .
     command: npm run dev

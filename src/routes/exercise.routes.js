@@ -9,9 +9,9 @@ const {
   deleteExercise,
 } = require("../controllers/exercise.controllers");
 
-router.route("/").get(getExercises).post(createExercise);
+router.route("/exercises").get(getExercises).post(createExercise);
 router
-  .route("/:id")
+  .route("/exercises/:id")
   .get(getExercise)
   .put(updateExercise)
   .delete(deleteExercise);

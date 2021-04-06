@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import exerciseRoutes from "./routes/exercise.routes";
+import welcomeRoutes from "./routes/welcome.routes";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.use("/api/exercises", exerciseRoutes);
+app.use(welcomeRoutes);
+app.use("/api", exerciseRoutes);
 
 export default app;

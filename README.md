@@ -22,11 +22,11 @@
 
 This project is built with
 
-- [Javascript](https://developer.mozilla.org/es/docs/Web/JavaScript)
 - [NodeJs](https://nodejs.org/)
 - [Express](https://expressjs.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Babel](https://babeljs.io/)
+- [Docker](https://www.docker.com/)
 
 <!-- GETTING STARTED -->
 
@@ -64,7 +64,7 @@ npm install
 
 ## Usage
 
-- Run the application `npm run start`
+- Run `npm run build` && `npm run start` for production mode
 - Run `npm run dev` for development mode
 
 <!-- LICENSE -->
