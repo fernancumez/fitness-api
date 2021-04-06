@@ -8,7 +8,7 @@
     "clean": "rimraf dist",
     "start": "node dist/index.js",
     "dev": "export NODE_ENV=development || SET NODE_ENV=development&& nodemon --exec babel-node src/index.js",
-    "test": "mocha test/exercise.test.js --require @babel/register --exit"
+    "test": "export NODE_ENV=development || SET NODE_ENV=development&& mocha test/exercise.test.js --require @babel/register --exit"
   },
   "repository": {
     "type": "git",
